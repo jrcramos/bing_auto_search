@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body {
+            width: 300px;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            margin: 0;
+        }
+        
+        .container {
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .search-controls {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        input[type="number"] {
+            width: 80px;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 14px;
+        }
+        
+        .delay-controls {
+            margin-top: 10px;
+        }
+        
+        .delay-inputs {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 5px;
+        }
+        
+        .delay-inputs input {
+            width: 60px;
+        }
+        
+        button {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin: 5px;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        button:disabled {
+            background: #666;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .status {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            background: rgba(255,255,255,0.1);
+            font-size: 12px;
+            min-height: 20px;
+        }
+        
+        .progress {
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+            padding: 8px;
+            margin-top: 10px;
+            display: none;
+        }
+        
+        .progress-bar {
+            background: linear-gradient(45deg, #00d2ff, #3a7bd5);
+            height: 6px;
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+        
+        .progress-text {
+            margin-top: 5px;
+            font-size: 11px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Bing Auto Search</h1>
+        
+        <div class="search-controls">
+            <label for="searchCount">Number of searches:</label>
+            <input type="number" id="searchCount" min="1" max="100" value="42">
+            
+            <div class="delay-controls">
+                <label>Delay between searches (seconds):</label>
+                <div class="delay-inputs">
+                    <input type="number" id="minDelay" min="1" max="60" value="5">
+                    <span>to</span>
+                    <input type="number" id="maxDelay" min="1" max="60" value="15">
+                </div>
+            </div>
+        </div>
+        
+        <button id="startSearch">Start Searches</button>
+        <button id="stopSearch" disabled>Stop</button>
+        <button id="closeTabs" disabled>Close All Tabs</button>
+        
+        <div class="progress" id="progress">
+            <div class="progress-bar" id="progressBar" style="width: 0%"></div>
+            <div class="progress-text" id="progressText">0 / 0</div>
+        </div>
+        
+        <div class="status" id="status">Ready to start searching...</div>
+    </div>
+    
+    <script src="popup.js"></script>
+</body>
+</html>
