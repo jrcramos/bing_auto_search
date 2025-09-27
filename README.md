@@ -23,7 +23,7 @@ A Chrome browser extension that automatically performs multiple Bing searches to
    Or download as ZIP and extract it.
 
 2. **Enable Developer Mode in Chrome**
-   - Open Chrome and go to `chrome://extensions/`
+   - Open Chrome or edge and go to `chrome://extensions/` or `edge://extensions/`
    - Toggle "Developer mode" ON in the top-right corner
 
 3. **Load the Extension**
@@ -35,7 +35,7 @@ A Chrome browser extension that automatically performs multiple Bing searches to
    - Click the puzzle piece icon in Chrome toolbar
    - Find "Bing Rewards Auto Search" and pin it for easy access
 
-### Method 2: Chrome Web Store
+### Method 2: Chrome or edge Web Store
 *Note: This extension is not currently published on the Chrome Web Store*
 
 ## 📱 Usage
@@ -63,7 +63,7 @@ A Chrome browser extension that automatically performs multiple Bing searches to
 
 - **Optimal Search Count**: Microsoft Rewards typically allows 30-34 searches per day for maximum points
 - **Natural Timing**: The random delays help make the searches appear more human-like
-- **Background Operation**: You can minimize Chrome and let the searches run in the background
+- **Background Operation**: You can minimize browser and let the searches run in the background
 - **Monitor Progress**: The extension shows real-time progress and current search status
 
 ## ⚙️ Technical Details
@@ -181,6 +181,14 @@ cd bing_auto_search
 - Basic automated search functionality
 - Simple popup interface
 
+## Privacy & Security
+
+- **No Data Collection**: The extension does not collect or transmit any personal data
+- **Local Processing**: All link detection happens locally in your browser
+- **No External Requests**: Extension doesn't communicate with external servers
+- **Temporary Storage**: Links are stored in memory only and cleared when tabs close
+- **Open Source**: Code is publicly available for security review
+  
 ## 📄 License
 
 This project is open source and available under the [MIT License](LICENSE).
