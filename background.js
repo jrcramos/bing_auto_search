@@ -303,6 +303,7 @@ class BingSearchManager {
         const progress = {
             completed: this.currentSearch,
             total: this.totalSearches,
+            isRunning: this.isRunning,
             finished: !this.isRunning && this.currentSearch === this.totalSearches && this.totalSearches > 0,
             status: this.isRunning ?
                 `Searching... (${this.currentSearch}/${this.totalSearches})` :
