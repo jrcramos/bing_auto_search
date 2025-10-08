@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
             closeTabsButton.disabled = false;
             isRunning = false;
             clearInterval(progressInterval);
-        } else if (progress.completed > 0) {
+        } else if (progress.isRunning) {
             progressDiv.style.display = 'block';
             startSearchButton.disabled = true;
             stopSearchButton.disabled = false;
