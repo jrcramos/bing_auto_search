@@ -54,10 +54,9 @@ extension.zip
 extension.crx
 key.pem
 
-# Screenshots for documentation (keep organized)
-screenshots/*.png
-docs/images/*.jpg
-docs/images/*.png
+# Screenshots for documentation are kept in the repository
+# Temporary screenshots should go in /tmp/screenshots/
+/tmp/screenshots/
 
 # Testing
 coverage/
