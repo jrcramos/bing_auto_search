@@ -5,10 +5,11 @@ A Chrome browser extension that automatically performs multiple Bing searches to
 ## ✨ Features
 
 - **Automated Bing Searches**: Performs multiple searches with random biotechnology and research-related keywords
+- **Daily Recurring Schedule**: Set it once and searches run automatically every day at the same time
 - **Customizable Search Count**: Set the number of searches (1-100) to perform
 - **Smart Delay System**: Random delays between searches (5-15 seconds) to appear more natural
 - **Progress Tracking**: Real-time progress bar and status updates
-- **Tab Management**: Easy cleanup with "Close All Tabs" functionality
+- **Auto-Close Tabs**: Automatically closes search tabs after completion for hands-free operation
 - **Background Operation**: Runs in the background without interrupting your browsing
 - **Research-Focused Keywords**: Uses 200+ curated scientific and biotechnology terms
 
@@ -49,21 +50,36 @@ A Chrome browser extension that automatically performs multiple Bing searches to
 2. **Configure Your Settings**
    - **Number of searches**: Choose between 1-100 searches (default: 42)
    - **Delay range**: Set minimum and maximum delay between searches (default: 5-15 seconds)
+   - **Auto-close tabs**: Enable to automatically close tabs after searches complete
 
 3. **Start Searching**
-   - Click "Start Searches" to begin the automated process
+   - **Immediate**: Click "Start Searches" to begin right away
+   - **Scheduled Daily**: Set a time and click "Schedule" for daily recurring searches
    - Watch the progress bar fill up as searches complete
    - Use "Stop" to halt the process at any time
 
 4. **Clean Up**
-   - Click "Close All Tabs" to close all opened Bing search tabs
-   - This helps keep your browser organized
+   - Auto-close feature handles cleanup automatically (recommended)
+   - Or click "Close All Tabs" manually to close all opened Bing search tabs
+
+### Scheduling Searches (NEW!)
+
+1. **Set Up Daily Automation**
+   - Pick a time when your computer is usually on (e.g., 9:00 AM)
+   - Configure your search settings
+   - Click "Schedule" button
+   - Searches will run **every day** at that time automatically
+
+2. **Cancel Schedule**
+   - Open the extension popup
+   - Click "Cancel Schedule" to stop daily recurring searches
 
 ### Advanced Tips
 
 - **Optimal Search Count**: Microsoft Rewards typically allows 30-34 searches per day for maximum points
+- **Daily Schedule**: Set once and forget - searches run automatically every day
 - **Natural Timing**: The random delays help make the searches appear more human-like
-- **Background Operation**: You can minimize browser and let the searches run in the background
+- **Background Operation**: Browser can run in the background for scheduled searches to execute
 - **Monitor Progress**: The extension shows real-time progress and current search status
 
 ## ⚙️ Technical Details
@@ -74,7 +90,9 @@ A Chrome browser extension that automatically performs multiple Bing searches to
 - **Permissions**: 
   - `tabs`: For creating and managing search tabs
   - `activeTab`: For interacting with the current tab
-- **Background Script**: `background.js` handles the search logic
+  - `storage`: For saving schedule preferences
+  - `alarms`: For scheduling recurring daily searches
+- **Background Script**: `background.js` handles the search logic and scheduling
 - **Popup Interface**: `popup.html` and `popup.js` provide the user interface
 
 ### Search Keywords
@@ -170,10 +188,16 @@ cd bing_auto_search
 
 ## 📝 Changelog
 
+### Version 1.2 (Current)
+- **Daily Recurring Schedule**: Searches run automatically every day at the same time
+- **Set and Forget**: Schedule once, runs indefinitely until canceled
+- Background execution support for Chrome/Edge
+
 ### Version 1.1
 - Enhanced UI with gradient design
 - Improved error handling and validation
 - Added progress tracking and status updates
+- Auto-close tabs feature
 - Better tab management functionality
 
 ### Version 1.0

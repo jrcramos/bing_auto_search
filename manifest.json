@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Bing Rewards Auto Search",
-  "version": "1.1",
-  "description": "Automatically perform multiple Bing searches",
+  "version": "1.2",
+  "description": "Automatically perform multiple Bing searches with daily recurring schedule",
   "permissions": [
     "tabs",
     "activeTab",
