@@ -2,15 +2,31 @@
 
 A Chrome browser extension that automatically performs multiple Bing searches to help you earn Microsoft Rewards points efficiently and effortlessly.
 
+![Extension UI](https://github.com/user-attachments/assets/dada2199-3ef0-4320-9773-00510dcad854)
+
+> *Automate your Microsoft Rewards points with intelligent, natural-looking Bing searches*
+
 ## ✨ Features
 
+### 🚀 Core Functionality
 - **Automated Bing Searches**: Performs multiple searches with random biotechnology and research-related keywords
 - **Customizable Search Count**: Set the number of searches (1-100) to perform
 - **Smart Delay System**: Random delays between searches (5-15 seconds) to appear more natural
 - **Progress Tracking**: Real-time progress bar and status updates
-- **Tab Management**: Easy cleanup with "Close All Tabs" functionality
 - **Background Operation**: Runs in the background without interrupting your browsing
+
+### 🎨 User Experience
+- **Modern Gradient UI**: Beautiful purple gradient design with smooth animations
+- **Real-time Feedback**: Live progress bar and status messages
+- **Schedule Feature**: Set specific times for automatic search execution
+- **One-Click Tab Cleanup**: "Close All Tabs" button for easy browser management
+- **Auto-close Option**: Automatically clean up tabs after completion
+
+### 🔧 Technical Excellence
 - **Research-Focused Keywords**: Uses 200+ curated scientific and biotechnology terms
+- **Manifest V3**: Built with the latest Chrome extension standard
+- **Efficient Performance**: Minimal resource usage and smart tab management
+- **No Data Collection**: Complete privacy with local-only processing
 
 ## 🚀 Installation
 
@@ -20,51 +36,121 @@ A Chrome browser extension that automatically performs multiple Bing searches to
    ```bash
    git clone https://github.com/jrcramos/bing_auto_search.git
    ```
-   Or download as ZIP and extract it.
+   Or [download as ZIP](https://github.com/jrcramos/bing_auto_search/archive/refs/heads/main.zip) and extract it.
 
 2. **Enable Developer Mode in Chrome**
-   - Open Chrome or edge and go to `chrome://extensions/` or `edge://extensions/`
-   - Toggle "Developer mode" ON in the top-right corner
+   - Open Chrome or Edge and navigate to:
+     - Chrome: `chrome://extensions/`
+     - Edge: `edge://extensions/`
+   - Toggle **"Developer mode"** ON in the top-right corner
 
 3. **Load the Extension**
-   - Click "Load unpacked" button
-   - Select the folder containing the extension files
-   - The extension icon should appear in your toolbar
+   - Click the **"Load unpacked"** button
+   - Navigate to and select the folder containing the extension files
+   - The extension icon 🔍 should appear in your browser toolbar
 
-4. **Pin the Extension (Optional)**
-   - Click the puzzle piece icon in Chrome toolbar
-   - Find "Bing Rewards Auto Search" and pin it for easy access
+4. **Pin the Extension (Optional but Recommended)**
+   - Click the puzzle piece (🧩) icon in your Chrome toolbar
+   - Find "Bing Rewards Auto Search" in the list
+   - Click the pin icon to keep it visible in your toolbar
 
-### Method 2: Chrome or edge Web Store
+### Method 2: Chrome or Edge Web Store
 *Note: This extension is not currently published on the Chrome Web Store*
+
+> **💡 Tip**: For detailed installation instructions with screenshots, check out our [Installation Guide](INSTALLATION.md).
+
+## 🎯 How It Works
+
+The extension automates Bing searches to help you earn Microsoft Rewards points:
+
+```
+1. Click Extension Icon
+         ↓
+2. Configure Settings (searches, delays, schedule)
+         ↓
+3. Click "Start Searches"
+         ↓
+4. Extension Opens Tabs with Random Keywords
+         ↓
+5. Waits Random Delay Between Each Search
+         ↓
+6. Progress Bar Shows Real-time Status
+         ↓
+7. Automatically Closes Tabs (if enabled)
+         ↓
+8. Complete! Earn Your Microsoft Rewards Points
+```
+
+**Why Random Keywords?** The extension uses 200+ carefully curated scientific and biotechnology terms to make searches appear natural and relevant, reducing the chance of being flagged as automated.
 
 ## 📱 Usage
 
-### Basic Usage
+### Quick Start Guide
 
-1. **Click the Extension Icon**
-   - Look for the 🔍 icon in your Chrome toolbar
-   - Click it to open the popup interface
+1. **Open the Extension**
+   - Click the 🔍 icon in your Chrome toolbar
+   - The extension popup will appear with all controls
 
-2. **Configure Your Settings**
-   - **Number of searches**: Choose between 1-100 searches (default: 42)
-   - **Delay range**: Set minimum and maximum delay between searches (default: 5-15 seconds)
+2. **Configure Your Search Settings**
+   - **Number of searches**: Enter 1-100 (default: 42)
+     - *Recommended: 30-40 for daily Microsoft Rewards*
+   - **Delay between searches**: Set min/max range (default: 5-15 seconds)
+     - *Tip: Longer delays appear more natural*
+   - **Auto-close tabs**: Keep checked to automatically clean up tabs
 
-3. **Start Searching**
-   - Click "Start Searches" to begin the automated process
-   - Watch the progress bar fill up as searches complete
-   - Use "Stop" to halt the process at any time
+3. **Optional: Schedule a Search**
+   - Set a specific time for automatic search execution
+   - Click "Schedule" to activate the timer
+   - Perfect for overnight or away-from-keyboard automation
 
-4. **Clean Up**
-   - Click "Close All Tabs" to close all opened Bing search tabs
-   - This helps keep your browser organized
+4. **Start Your Automated Searches**
+   - Click the **"Start Searches"** button
+   - Watch the real-time progress bar and status updates
+   - Click **"Stop"** anytime to halt the process
 
-### Advanced Tips
+5. **Manage Your Tabs**
+   - Click **"Close All Tabs"** to clean up all Bing search tabs
+   - Keeps your browser organized and clutter-free
 
-- **Optimal Search Count**: Microsoft Rewards typically allows 30-34 searches per day for maximum points
-- **Natural Timing**: The random delays help make the searches appear more human-like
-- **Background Operation**: You can minimize browser and let the searches run in the background
-- **Monitor Progress**: The extension shows real-time progress and current search status
+### Advanced Tips & Best Practices
+
+- 🎯 **Optimal Search Count**: Microsoft Rewards typically allows 30-34 PC searches per day for maximum points
+- ⏱️ **Natural Timing**: Random delays (5-15 seconds) help searches appear more human-like and avoid detection
+- 🔄 **Background Operation**: Minimize your browser and let searches run while you work on other tasks
+- 📊 **Monitor Progress**: Real-time progress bar shows current search count and status
+- 🌐 **Account Safety**: Don't exceed reasonable daily limits or use very short delays
+- 📅 **Daily Routine**: Schedule searches for the same time each day for consistency
+
+### Understanding the Interface
+
+The extension popup includes:
+- **Search Controls**: Number of searches and delay configuration
+- **Schedule Feature**: Set automatic execution at a specific time
+- **Action Buttons**: Start, Stop, and Close All Tabs
+- **Progress Tracking**: Real-time status updates and progress bar
+- **Status Messages**: Clear feedback on what the extension is doing
+
+## 📸 Screenshots & Visual Guide
+
+### Extension Popup Interface
+
+![Extension Popup](https://github.com/user-attachments/assets/dada2199-3ef0-4320-9773-00510dcad854)
+
+The extension features a modern, gradient-styled interface with:
+- **Clean UI Design**: Purple gradient background with intuitive controls
+- **Search Configuration**: Easy-to-use number inputs for search count and delays
+- **Schedule Feature**: Built-in timer for automated execution
+- **Action Buttons**: Prominent Start, Stop, and Close All Tabs buttons
+- **Real-time Feedback**: Status messages and progress tracking
+
+### Key Features Highlighted
+
+- ✅ **Customizable Search Count** (1-100 searches)
+- ✅ **Random Delay System** (5-15 seconds default, fully adjustable)
+- ✅ **Auto-close Tab Option** (keep your browser clean)
+- ✅ **Schedule Timer** (set it and forget it)
+- ✅ **Progress Tracking** (see exactly where you are)
+- ✅ **Tab Management** (one-click cleanup)
 
 ## ⚙️ Technical Details
 
@@ -97,7 +183,14 @@ bing_auto_search/
 ├── popup.js              # UI interaction logic
 ├── icons/
 │   └── icon16.png        # Extension icon
-└── README.md             # This file
+├── screenshots/          # Visual documentation
+│   └── popup-ui.png      # UI screenshots
+├── README.md             # Main documentation
+├── INSTALLATION.md       # Detailed installation guide
+├── CONTRIBUTING.md       # Contribution guidelines
+├── USAGE_GUIDE.md        # Comprehensive usage guide
+├── USER_GUIDE.md         # User documentation
+└── CHANGELOG.md          # Version history
 ```
 
 ## 🛠️ Troubleshooting
