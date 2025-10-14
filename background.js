@@ -257,31 +257,33 @@ class BingSearchManager {
     }
 
     async closeAllTabs() {
-        console.log(`Attempting to close ${this.searchTabs.length} search tabs`);
+        console.log(`Attempting to close search tabs. Tracked tabs: ${this.searchTabs.length}`);
         
-        if (this.searchTabs.length === 0) {
-            console.log("No search tabs to close");
-            return { success: false, error: 'No search tabs to close' };
-        }
-
         // Stop any running searches first
         this.stopSearches();
 
-        let closedCount = 0;
-        const initialTabs = [...this.searchTabs]; // Copy the array before iterating
-        this.searchTabs = []; // Clear the array immediately
+        // Query for all Bing search tabs
+        const allTabs = await chrome.tabs.query({});
+        const bingSearchTabs = allTabs.filter(tab => 
+            tab.url && tab.url.includes('bing.com/search')
+        );
 
-        for (const tabId of initialTabs) {
+        console.log(`Found ${bingSearchTabs.length} Bing search tabs to close`);
+
+        if (bingSearchTabs.length === 0) {
+            console.log("No Bing search tabs found to close");
+            return { success: false, error: 'No search tabs to close' };
+        }
+
+        let closedCount = 0;
+        const tabIdsToClose = bingSearchTabs.map(tab => tab.id);
+        this.searchTabs = []; // Clear the tracked array
+
+        for (const tabId of tabIdsToClose) {
             try {
-                // Check if tab still exists before trying to close it
-                const tab = await chrome.tabs.get(tabId).catch(() => null);
-                if (tab) {
-                    await chrome.tabs.remove(tabId);
-                    closedCount++;
-                    console.log(`Closed tab ${tabId}`);
-                } else {
-                    console.log(`Tab ${tabId} already closed`);
-                }
+                await chrome.tabs.remove(tabId);
+                closedCount++;
+                console.log(`Closed tab ${tabId}`);
                 // Small delay between closing tabs to avoid overwhelming the browser
                 await this.sleep(100);
             } catch (error) {
