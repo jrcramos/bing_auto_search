@@ -5,6 +5,13 @@ All notable changes to the Bing Auto Search extension will be documented in this
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Fixed
+- "Close All Tabs" now finds and closes all Bing search tabs in the browser, not just tracked tabs
+- Resolved "No search tabs to close" error when tabs exist but weren't tracked by the extension
+- Improved reliability when closing tabs after navigating away from the extension
+
 ## [1.1] - 2024-Current
 
 ### Added
