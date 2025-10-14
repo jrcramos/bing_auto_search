@@ -229,7 +229,7 @@ If you need to stop searches immediately:
 
 **Manual Cleanup:**
 - Use "Close All Tabs" button when finished
-- Closes only Bing search tabs created by the extension
+- Closes all Bing search tabs (bing.com/search) in your browser
 - Your other tabs remain untouched
 
 ### Error Recovery
