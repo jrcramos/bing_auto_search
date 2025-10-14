@@ -113,6 +113,50 @@
             margin-top: 5px;
             font-size: 11px;
         }
+        
+        .checkbox-option {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+            font-size: 12px;
+        }
+        
+        .checkbox-option input[type="checkbox"] {
+            width: auto;
+            margin-right: 8px;
+            cursor: pointer;
+        }
+        
+        .checkbox-option label {
+            margin: 0;
+            cursor: pointer;
+            font-weight: normal;
+        }
+        
+        .schedule-controls {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .time-input-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        input[type="time"] {
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
@@ -131,6 +175,20 @@
                     <input type="number" id="maxDelay" min="1" max="60" value="15">
                 </div>
             </div>
+            
+            <div class="checkbox-option">
+                <input type="checkbox" id="autoCloseTabs" checked>
+                <label for="autoCloseTabs">Auto-close tabs after completion</label>
+            </div>
+        </div>
+        
+        <div class="schedule-controls">
+            <label>Schedule Search:</label>
+            <div class="time-input-group">
+                <input type="time" id="scheduleTime">
+                <button id="scheduleSearch">Schedule</button>
+            </div>
+            <div id="scheduleStatus" style="font-size: 11px; margin-top: 8px;"></div>
         </div>
         
         <button id="startSearch">Start Searches</button>

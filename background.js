@@ -5,6 +5,7 @@ class BingSearchManager {
         this.currentSearch = 0;
         this.totalSearches = 0;
         this.searchTimeout = null;
+        this.autoCloseTabs = true;
 
         this.wordList = [
             // Core Research Areas
@@ -135,6 +136,7 @@ class BingSearchManager {
         try {
             switch (request.action) {
                 case 'startSearches':
+                    this.autoCloseTabs = request.autoCloseTabs !== undefined ? request.autoCloseTabs : true;
                     const result = await this.startSearches(request.searchCount, request.minDelay, request.maxDelay);
                     sendResponse(result);
                     break;
@@ -151,6 +153,21 @@ class BingSearchManager {
 
                 case 'getProgress':
                     sendResponse(this.getProgress());
+                    break;
+
+                case 'scheduleSearch':
+                    const scheduleResult = await this.scheduleSearch(request.time, request.searchCount, request.minDelay, request.maxDelay, request.autoCloseTabs);
+                    sendResponse(scheduleResult);
+                    break;
+
+                case 'cancelSchedule':
+                    const cancelResult = await this.cancelSchedule();
+                    sendResponse(cancelResult);
+                    break;
+
+                case 'getSchedule':
+                    const schedule = await this.getSchedule();
+                    sendResponse(schedule);
                     break;
 
                 default:
@@ -229,6 +246,13 @@ class BingSearchManager {
         if (this.isRunning) {
             this.isRunning = false; // Mark as not running after the loop finishes
             console.log("All searches completed.");
+            
+            // Auto-close tabs if option is enabled
+            if (this.autoCloseTabs) {
+                console.log("Auto-closing tabs after search completion...");
+                await this.sleep(2000); // Wait 2 seconds before closing
+                await this.closeAllTabs();
+            }
         }
     }
 
@@ -318,7 +342,106 @@ class BingSearchManager {
         console.log(`Progress: ${progress.completed}/${progress.total}, Running: ${this.isRunning}, Tabs tracked: ${this.searchTabs.length}`);
         return progress;
     }
+
+    async scheduleSearch(time, searchCount, minDelay, maxDelay, autoCloseTabs) {
+        try {
+            // Parse the time string (HH:MM format)
+            const [hours, minutes] = time.split(':').map(Number);
+            
+            // Get current time
+            const now = new Date();
+            const scheduledTime = new Date();
+            scheduledTime.setHours(hours, minutes, 0, 0);
+            
+            // If scheduled time is in the past, schedule for tomorrow
+            if (scheduledTime <= now) {
+                scheduledTime.setDate(scheduledTime.getDate() + 1);
+            }
+            
+            // Calculate delay in minutes
+            const delayInMinutes = Math.ceil((scheduledTime - now) / (1000 * 60));
+            
+            // Save schedule info to storage
+            await chrome.storage.local.set({
+                scheduledSearch: {
+                    time: scheduledTime.toISOString(),
+                    searchCount,
+                    minDelay,
+                    maxDelay,
+                    autoCloseTabs,
+                    formattedTime: time
+                }
+            });
+            
+            // Create alarm
+            await chrome.alarms.create('scheduledSearch', {
+                delayInMinutes: delayInMinutes
+            });
+            
+            console.log(`Search scheduled for ${scheduledTime.toLocaleString()}`);
+            return { 
+                success: true, 
+                scheduledTime: scheduledTime.toLocaleString(),
+                delayMinutes: delayInMinutes
+            };
+        } catch (error) {
+            console.error('Error scheduling search:', error);
+            return { success: false, error: error.message };
+        }
+    }
+
+    async cancelSchedule() {
+        try {
+            await chrome.alarms.clear('scheduledSearch');
+            await chrome.storage.local.remove('scheduledSearch');
+            console.log('Scheduled search cancelled');
+            return { success: true };
+        } catch (error) {
+            console.error('Error cancelling schedule:', error);
+            return { success: false, error: error.message };
+        }
+    }
+
+    async getSchedule() {
+        try {
+            const data = await chrome.storage.local.get('scheduledSearch');
+            if (data.scheduledSearch) {
+                return { 
+                    success: true, 
+                    scheduled: true,
+                    ...data.scheduledSearch
+                };
+            }
+            return { success: true, scheduled: false };
+        } catch (error) {
+            console.error('Error getting schedule:', error);
+            return { success: false, error: error.message };
+        }
+    }
 }
 
 // Initialize the search manager
 const searchManager = new BingSearchManager();
+
+// Listen for alarms
+chrome.alarms.onAlarm.addListener(async (alarm) => {
+    if (alarm.name === 'scheduledSearch') {
+        console.log('Scheduled search alarm triggered');
+        
+        // Get scheduled search details
+        const data = await chrome.storage.local.get('scheduledSearch');
+        if (data.scheduledSearch) {
+            const { searchCount, minDelay, maxDelay, autoCloseTabs } = data.scheduledSearch;
+            
+            // Set auto-close option
+            searchManager.autoCloseTabs = autoCloseTabs;
+            
+            // Start the searches
+            await searchManager.startSearches(searchCount, minDelay, maxDelay);
+            
+            // Clear the schedule after execution
+            await chrome.storage.local.remove('scheduledSearch');
+            console.log('Scheduled search completed and cleared');
+        }
+    }
+});
