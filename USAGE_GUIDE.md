@@ -22,11 +22,11 @@ Automatically closes all search tabs after your searches complete, keeping your 
 ## Schedule Searches Feature
 
 ### What It Does
-Allows you to schedule searches to run automatically at a specific time, even if you close your browser.
+Allows you to schedule searches to run automatically **every day** at a specific time. The schedule repeats daily until you cancel it, and works even if you close your browser.
 
 ### How to Use
 
-#### To Schedule a Search:
+#### To Schedule a Recurring Daily Search:
 1. Open the extension popup
 2. Find the "Schedule Search" section
 3. Click on the time picker input
@@ -36,34 +36,38 @@ Allows you to schedule searches to run automatically at a specific time, even if
    - Delay ranges
    - Auto-close preference
 6. Click the "Schedule" button
-7. You'll see a status message confirming when the search is scheduled
+7. You'll see a status message showing "Daily schedule:" with the next run time
 
 #### To Cancel a Scheduled Search:
 1. Open the extension popup
 2. If a search is scheduled, the button will show "Cancel Schedule"
-3. Click "Cancel Schedule" to remove the scheduled task
+3. Click "Cancel Schedule" to stop the daily recurring schedule
 
 ### Important Notes
-- If you select a time that has already passed today, the search will be scheduled for **tomorrow**
+- **Recurring Daily**: Once scheduled, searches will run **every day** at the same time until you cancel
+- If you select a time that has already passed today, the first run will be scheduled for **tomorrow**
 - The schedule persists even if you close the browser or restart your computer
 - Scheduled searches use the settings you configured when you set up the schedule
-- Only one search can be scheduled at a time
+- Only one recurring schedule can be active at a time
 - The extension needs to be installed and enabled for scheduled searches to run
+- Your browser must be running (even in the background) for the scheduled search to execute
 
 ### Examples
 
-**Example 1: Morning Routine**
+**Example 1: Daily Morning Routine**
 - Set time to 09:00
 - Configure 34 searches (typical daily limit)
 - Enable auto-close
 - Click Schedule
-- Searches run automatically at 9 AM tomorrow
+- Searches run automatically **every day** at 9 AM
+- Cancel anytime to stop the daily schedule
 
-**Example 2: Lunch Break Automation**
+**Example 2: Daily Lunch Break Automation**
 - Set time to 12:30
 - Configure your preferred settings
 - Schedule for later today (if before 12:30 PM) or tomorrow
-- Extension handles everything automatically
+- Searches will run **every day** at 12:30 PM
+- Extension handles everything automatically in the background
 
 ---
 
@@ -92,8 +96,11 @@ Allows you to schedule searches to run automatically at a specific time, even if
 **Q: Will scheduled searches work if I close my browser?**  
 A: Yes! As long as Chrome/Edge is running in the background and the extension is enabled.
 
+**Q: How often do scheduled searches run?**  
+A: Once scheduled, searches run **every day** at the same time until you cancel the schedule.
+
 **Q: Can I schedule multiple searches?**  
-A: Currently, only one scheduled search at a time is supported.
+A: Currently, only one recurring daily schedule can be active at a time.
 
 **Q: Does auto-close affect manual searches?**  
 A: Yes, if the checkbox is enabled, it will close tabs after any search completes (manual or scheduled).
@@ -102,14 +109,18 @@ A: Yes, if the checkbox is enabled, it will close tabs after any search complete
 A: Cancel the current schedule and create a new one with your preferred time.
 
 **Q: What happens if my computer is off at the scheduled time?**  
-A: The scheduled search will not run. You'll need to schedule it again for a future time.
+A: The scheduled search will be missed for that day. It will run the next day at the scheduled time.
+
+**Q: How do I stop the daily recurring schedule?**  
+A: Open the extension popup and click "Cancel Schedule" to stop all future scheduled searches.
 
 ---
 
 ## Best Practices
 
-1. **For Daily Use**: Schedule searches for a time when your computer is always on
-2. **For Testing**: Start with immediate searches to verify your settings work
-3. **For Maximum Automation**: Enable auto-close with scheduled searches
-4. **For Manual Review**: Disable auto-close and review tabs before closing
-5. **For Consistency**: Use the same time every day for routine reward earning
+1. **For Daily Automation**: Schedule searches for a time when your computer is reliably on (e.g., morning or lunch)
+2. **For Testing**: Start with immediate searches to verify your settings work before scheduling
+3. **For Maximum Automation**: Enable auto-close with scheduled searches for completely hands-free operation
+4. **For Manual Review**: Disable auto-close if you want to review tabs before closing them
+5. **Set and Forget**: Once scheduled, searches run automatically every day - no need to remember or manually start them
+6. **Keep Browser Running**: Ensure Chrome/Edge runs in the background for scheduled searches to execute

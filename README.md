@@ -10,6 +10,7 @@ A Chrome browser extension that automatically performs multiple Bing searches to
 
 ### 🚀 Core Functionality
 - **Automated Bing Searches**: Performs multiple searches with random biotechnology and research-related keywords
+- **Daily Recurring Schedule**: Set it once and searches run automatically every day at the same time
 - **Customizable Search Count**: Set the number of searches (1-100) to perform
 - **Smart Delay System**: Random delays between searches (5-15 seconds) to appear more natural
 - **Progress Tracking**: Real-time progress bar and status updates
@@ -132,25 +133,9 @@ The extension popup includes:
 
 ## 📸 Screenshots & Visual Guide
 
-### Extension Popup Interface
-
-![Extension Popup](https://github.com/user-attachments/assets/dada2199-3ef0-4320-9773-00510dcad854)
-
-The extension features a modern, gradient-styled interface with:
-- **Clean UI Design**: Purple gradient background with intuitive controls
-- **Search Configuration**: Easy-to-use number inputs for search count and delays
-- **Schedule Feature**: Built-in timer for automated execution
-- **Action Buttons**: Prominent Start, Stop, and Close All Tabs buttons
-- **Real-time Feedback**: Status messages and progress tracking
 
 ### Key Features Highlighted
 
-- ✅ **Customizable Search Count** (1-100 searches)
-- ✅ **Random Delay System** (5-15 seconds default, fully adjustable)
-- ✅ **Auto-close Tab Option** (keep your browser clean)
-- ✅ **Schedule Timer** (set it and forget it)
-- ✅ **Progress Tracking** (see exactly where you are)
-- ✅ **Tab Management** (one-click cleanup)
 
 ## ⚙️ Technical Details
 
@@ -160,7 +145,9 @@ The extension features a modern, gradient-styled interface with:
 - **Permissions**: 
   - `tabs`: For creating and managing search tabs
   - `activeTab`: For interacting with the current tab
-- **Background Script**: `background.js` handles the search logic
+  - `storage`: For saving schedule preferences
+  - `alarms`: For scheduling recurring daily searches
+- **Background Script**: `background.js` handles the search logic and scheduling
 - **Popup Interface**: `popup.html` and `popup.js` provide the user interface
 
 ### Search Keywords
@@ -263,10 +250,16 @@ cd bing_auto_search
 
 ## 📝 Changelog
 
+### Version 1.2 (Current)
+- **Daily Recurring Schedule**: Searches run automatically every day at the same time
+- **Set and Forget**: Schedule once, runs indefinitely until canceled
+- Background execution support for Chrome/Edge
+
 ### Version 1.1
 - Enhanced UI with gradient design
 - Improved error handling and validation
 - Added progress tracking and status updates
+- Auto-close tabs feature
 - Better tab management functionality
 
 ### Version 1.0
