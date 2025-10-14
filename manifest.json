@@ -5,7 +5,9 @@
   "description": "Automatically perform multiple Bing searches",
   "permissions": [
     "tabs",
-    "activeTab"
+    "activeTab",
+    "storage",
+    "alarms"
   ],
   "host_permissions": [
     "https://www.bing.com/*",
