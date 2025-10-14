@@ -361,7 +361,7 @@ class BingSearchManager {
             // Calculate delay in minutes
             const delayInMinutes = Math.ceil((scheduledTime - now) / (1000 * 60));
             
-            // Save schedule info to storage
+            // Save schedule info to storage with recurring flag
             await chrome.storage.local.set({
                 scheduledSearch: {
                     time: scheduledTime.toISOString(),
@@ -369,7 +369,8 @@ class BingSearchManager {
                     minDelay,
                     maxDelay,
                     autoCloseTabs,
-                    formattedTime: time
+                    formattedTime: time,
+                    recurring: true // Mark as recurring daily schedule
                 }
             });
             
@@ -378,11 +379,12 @@ class BingSearchManager {
                 delayInMinutes: delayInMinutes
             });
             
-            console.log(`Search scheduled for ${scheduledTime.toLocaleString()}`);
+            console.log(`Recurring daily search scheduled for ${scheduledTime.toLocaleString()}`);
             return { 
                 success: true, 
                 scheduledTime: scheduledTime.toLocaleString(),
-                delayMinutes: delayInMinutes
+                delayMinutes: delayInMinutes,
+                recurring: true
             };
         } catch (error) {
             console.error('Error scheduling search:', error);
@@ -431,7 +433,7 @@ chrome.alarms.onAlarm.addListener(async (alarm) => {
         // Get scheduled search details
         const data = await chrome.storage.local.get('scheduledSearch');
         if (data.scheduledSearch) {
-            const { searchCount, minDelay, maxDelay, autoCloseTabs } = data.scheduledSearch;
+            const { searchCount, minDelay, maxDelay, autoCloseTabs, recurring, formattedTime } = data.scheduledSearch;
             
             // Set auto-close option
             searchManager.autoCloseTabs = autoCloseTabs;
@@ -439,9 +441,46 @@ chrome.alarms.onAlarm.addListener(async (alarm) => {
             // Start the searches
             await searchManager.startSearches(searchCount, minDelay, maxDelay);
             
-            // Clear the schedule after execution
-            await chrome.storage.local.remove('scheduledSearch');
-            console.log('Scheduled search completed and cleared');
+            // If recurring, reschedule for tomorrow at the same time
+            if (recurring && formattedTime) {
+                console.log('Rescheduling recurring search for tomorrow');
+                
+                // Parse the time string (HH:MM format)
+                const [hours, minutes] = formattedTime.split(':').map(Number);
+                
+                // Calculate next occurrence (24 hours from now)
+                const now = new Date();
+                const nextScheduledTime = new Date();
+                nextScheduledTime.setHours(hours, minutes, 0, 0);
+                nextScheduledTime.setDate(nextScheduledTime.getDate() + 1);
+                
+                // Calculate delay in minutes
+                const delayInMinutes = Math.ceil((nextScheduledTime - now) / (1000 * 60));
+                
+                // Update schedule info in storage
+                await chrome.storage.local.set({
+                    scheduledSearch: {
+                        time: nextScheduledTime.toISOString(),
+                        searchCount,
+                        minDelay,
+                        maxDelay,
+                        autoCloseTabs,
+                        formattedTime,
+                        recurring: true
+                    }
+                });
+                
+                // Create alarm for next day
+                await chrome.alarms.create('scheduledSearch', {
+                    delayInMinutes: delayInMinutes
+                });
+                
+                console.log(`Recurring search rescheduled for ${nextScheduledTime.toLocaleString()}`);
+            } else {
+                // Not recurring, clear the schedule after execution
+                await chrome.storage.local.remove('scheduledSearch');
+                console.log('Scheduled search completed and cleared');
+            }
         }
     }
 });

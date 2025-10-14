@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
             if (response && response.success) {
-                scheduleStatusEl.textContent = `Scheduled for ${response.scheduledTime}`;
+                scheduleStatusEl.textContent = `Daily schedule: ${response.scheduledTime}`;
                 scheduleSearchButton.textContent = 'Cancel Schedule';
                 scheduleSearchButton.style.background = 'linear-gradient(45deg, #ff6b6b, #ee5a24)';
             } else {
@@ -222,7 +222,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             if (response && response.success && response.scheduled) {
                 const scheduledDate = new Date(response.time);
-                scheduleStatusEl.textContent = `Scheduled for ${scheduledDate.toLocaleString()}`;
+                const scheduleText = response.recurring ? `Daily schedule: ${scheduledDate.toLocaleString()}` : `Scheduled for ${scheduledDate.toLocaleString()}`;
+                scheduleStatusEl.textContent = scheduleText;
                 scheduleSearchButton.textContent = 'Cancel Schedule';
                 scheduleSearchButton.style.background = 'linear-gradient(45deg, #ff6b6b, #ee5a24)';
                 

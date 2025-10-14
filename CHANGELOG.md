@@ -7,12 +7,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2] - 2024-Current
+
+### Added
+- **Daily Recurring Schedule**: Searches now run automatically every day at the same time
+- Set once, forget forever - schedule persists until manually canceled
+- Works with browser running in background (Chrome/Edge)
+- Clear status indication showing "Daily schedule" instead of one-time schedule
+
+### Changed
+- Schedule now repeats daily instead of running once and clearing
+- Updated UI messaging to reflect recurring nature of schedules
+- Enhanced alarm listener to automatically reschedule for next day after execution
+
+### Documentation
+- Updated USAGE_GUIDE.md with recurring schedule information
+- Enhanced README.md with scheduling feature details
+- Added FAQ entries about daily recurring schedules
+
+## [1.1] - 2024-Previous
+
 ### Fixed
 - "Close All Tabs" now finds and closes all Bing search tabs in the browser, not just tracked tabs
 - Resolved "No search tabs to close" error when tabs exist but weren't tracked by the extension
 - Improved reliability when closing tabs after navigating away from the extension
-
-## [1.1] - 2024-Current
 
 ### Added
 - Enhanced user interface with gradient design and modern styling
