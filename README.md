@@ -1,6 +1,6 @@
 # 🔍 Bing Auto Search - Microsoft Rewards Automator
 
-A Chrome browser extension that automatically performs multiple Bing searches to help you earn Microsoft Rewards points efficiently and effortlessly.
+A Chromium browser extension that automatically performs multiple Bing searches to help you earn Microsoft Rewards points efficiently and effortlessly.
 
 ![Extension UI](https://github.com/user-attachments/assets/dada2199-3ef0-4320-9773-00510dcad854)
 
@@ -25,7 +25,7 @@ A Chrome browser extension that automatically performs multiple Bing searches to
 
 ### 🔧 Technical Excellence
 - **Research-Focused Keywords**: Uses 200+ curated scientific and biotechnology terms
-- **Manifest V3**: Built with the latest Chrome extension standard
+- **Manifest V3**: Built with the latest Chromium extension standard
 - **Efficient Performance**: Minimal resource usage and smart tab management
 - **No Data Collection**: Complete privacy with local-only processing
 
@@ -39,9 +39,9 @@ A Chrome browser extension that automatically performs multiple Bing searches to
    ```
    Or [download as ZIP](https://github.com/jrcramos/bing_auto_search/archive/refs/heads/main.zip) and extract it.
 
-2. **Enable Developer Mode in Chrome**
-   - Open Chrome or Edge and navigate to:
-     - Chrome: `chrome://extensions/`
+2. **Enable Developer Mode in Chromium**
+   - Open Chromium or Edge and navigate to:
+     - Chromium: `Chromium://extensions/`
      - Edge: `edge://extensions/`
    - Toggle **"Developer mode"** ON in the top-right corner
 
@@ -51,12 +51,12 @@ A Chrome browser extension that automatically performs multiple Bing searches to
    - The extension icon 🔍 should appear in your browser toolbar
 
 4. **Pin the Extension (Optional but Recommended)**
-   - Click the puzzle piece (🧩) icon in your Chrome toolbar
+   - Click the puzzle piece (🧩) icon in your Chromium toolbar
    - Find "Bing Rewards Auto Search" in the list
    - Click the pin icon to keep it visible in your toolbar
 
-### Method 2: Chrome or Edge Web Store
-*Note: This extension is not currently published on the Chrome Web Store*
+### Method 2: Chromium or Edge Web Store
+*Note: This extension is not currently published on the Chromium Web Store*
 
 > **💡 Tip**: For detailed installation instructions with screenshots, check out our [Installation Guide](INSTALLATION.md).
 
@@ -89,7 +89,7 @@ The extension automates Bing searches to help you earn Microsoft Rewards points:
 ### Quick Start Guide
 
 1. **Open the Extension**
-   - Click the 🔍 icon in your Chrome toolbar
+   - Click the 🔍 icon in your Chromium toolbar
    - The extension popup will appear with all controls
 
 2. **Configure Your Search Settings**
@@ -141,7 +141,7 @@ The extension popup includes:
 
 ### Architecture
 
-- **Manifest Version**: 3 (latest Chrome extension standard)
+- **Manifest Version**: 3 (latest Chromium extension standard)
 - **Permissions**: 
   - `tabs`: For creating and managing search tabs
   - `activeTab`: For interacting with the current tab
@@ -200,9 +200,9 @@ bing_auto_search/
 - Verify your region is eligible for Microsoft Rewards
 
 **Extension popup doesn't open**
-- Try refreshing the extension: go to `chrome://extensions/` and click refresh
+- Try refreshing the extension: go to `Chromium://extensions/` and click refresh
 - Check if the extension is enabled
-- Restart Chrome if issues persist
+- Restart Chromium if issues persist
 
 ### Error Messages
 
@@ -244,8 +244,8 @@ We welcome contributions! Here's how you can help:
 git clone https://github.com/jrcramos/bing_auto_search.git
 cd bing_auto_search
 
-# Load the extension in Chrome for testing
-# Go to chrome://extensions/, enable Developer mode, and click "Load unpacked"
+# Load the extension in Chromium for testing
+# Go to Chromium://extensions/, enable Developer mode, and click "Load unpacked"
 ```
 
 ## 📝 Changelog
@@ -253,7 +253,7 @@ cd bing_auto_search
 ### Version 1.2 (Current)
 - **Daily Recurring Schedule**: Searches run automatically every day at the same time
 - **Set and Forget**: Schedule once, runs indefinitely until canceled
-- Background execution support for Chrome/Edge
+- Background execution support for Chromium/Edge
 
 ### Version 1.1
 - Enhanced UI with gradient design
